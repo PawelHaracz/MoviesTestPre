@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FakeItEasy;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.Linq;
+using MoviesTestPre.Repository;
+using MoviesTestPre.Repository.Model;
+
+namespace MoviesTestPre.Tests.Repository.DocumentDbRepository
+{
+    public class DocumentDbRepositoryFixure
+    {
+        public readonly IDocumentDbRepository<ExampleModel> Fixure;
+
+        public DocumentDbRepositoryFixure()
+        {
+            var config = new DatabaseConfig()
+            {
+                CollectionId = "test",
+                DataBaseId = "test"
+            };
+
+            IDocumentClient client = A.Fake<IDocumentClient>();
+            
+            MockDocumentClient(client);
+
+
+            this.Fixure = new DocumentDbRepository<ExampleModel>(client,config);
+        }
+
+        private static void MockDocumentClient(IDocumentClient client)
+        {
+            IOrderedQueryable<ExampleModel> returnValueCollection = new List<ExampleModel>()
+                {
+                    new ExampleModel() {Name = "A", Number = 25},
+                    new ExampleModel() {Name = "@#d", Number = -8587}
+                }
+                .AsQueryable()
+                .OrderBy(p => 0);
+
+
+            A.CallTo(() => client.CreateDocumentQuery<ExampleModel>(A<Uri>._, A<FeedOptions>.Ignored))
+                .Returns(returnValueCollection);
+
+            A.CallTo(() => client.CreateDocumentAsync(A<Uri>._, A<ExampleModel>._ ,A<RequestOptions>.Ignored, A<bool>.Ignored))
+                .Returns(new ResourceResponse<Document>(new Document()));
+
+            A.CallTo(() => client.ReplaceDocumentAsync(A<Uri>._, A<ExampleModel>._, A<RequestOptions>.Ignored))
+              .Returns(new ResourceResponse<Document>(new Document()));
+        }
+    }
+
+    public class ExampleModel
+    {
+        [Newtonsoft.Json.JsonProperty("name")]
+        public string Name { get; set; }
+        [Newtonsoft.Json.JsonProperty("number")]
+        public int Number { get; set; }
+    }
+}
