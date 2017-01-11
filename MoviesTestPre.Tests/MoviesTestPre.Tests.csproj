@@ -95,10 +95,6 @@
       <Project>{5182FC3F-21FA-4268-9441-9B39D9351CFD}</Project>
       <Name>MoviesTestPre.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MoviesTestPre\MoviesTestPre.csproj">
-      <Project>{2375A636-F3BA-474A-B1B6-5FCBC9609459}</Project>
-      <Name>MoviesTestPre</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
