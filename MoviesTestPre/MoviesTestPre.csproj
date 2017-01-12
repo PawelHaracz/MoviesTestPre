@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,6 +226,8 @@
     <Content Include="Views\UserProfile\Index.cshtml" />
     <Content Include="Views\UserProfile\Relogin.cshtml" />
     <Content Include="Service References\AzureAD\ConnectedService.json" />
+    <Content Include="Views\Error\ShowError.cshtml" />
+    <Content Include="Views\Error\Reauth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

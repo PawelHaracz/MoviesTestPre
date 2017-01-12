@@ -16,12 +16,13 @@ namespace MoviesTestPre
 {
     public partial class Startup
     {
-        private static string clientId = ConfigurationManager.AppSettings["ida:ClientId"];
-        private string appKey = ConfigurationManager.AppSettings["ida:ClientSecret"];
-        private string graphResourceID = "https://graph.windows.net";
-        private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];
-        private string authority = aadInstance + "common";
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly string _clientId = ConfigurationManager.AppSettings["ida:ClientId"];
+        private readonly string _appKey = ConfigurationManager.AppSettings["ida:ClientSecret"];
+        private readonly string _graphResourceId = "https://graph.windows.net";
+        private readonly string _aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];
+        private readonly string _authority = $"{ConfigurationManager.AppSettings["ida:AADInstance"]}common";
+        
+        //private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -31,40 +32,36 @@ namespace MoviesTestPre
             app.UseCookieAuthentication(new CookieAuthenticationOptions { });
 
             app.UseOpenIdConnectAuthentication(
-                new OpenIdConnectAuthenticationOptions
+                openIdConnectOptions: new OpenIdConnectAuthenticationOptions
                 {
-                    ClientId = clientId,
-                    Authority = authority,
+                    ClientId = _clientId,
+                    Authority = _authority,
                     TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters
-                    {
-                        // instead of using the default validation (validating against a single issuer value, as we do in line of business apps), 
-                        // we inject our own multitenant validation logic
+                    {         
                         ValidateIssuer = false,
+                        RoleClaimType = "roles"
                     },
                     Notifications = new OpenIdConnectAuthenticationNotifications()
                     {
-                        SecurityTokenValidated = (context) => 
-                        {
-                            return Task.FromResult(0);
-                        },
+                        SecurityTokenValidated = (context) => Task.FromResult(0),
                         AuthorizationCodeReceived = (context) =>
                         {
                             var code = context.Code;
 
-                            ClientCredential credential = new ClientCredential(clientId, appKey);
-                            string tenantID = context.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
-                            string signedInUserID = context.AuthenticationTicket.Identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                            var credential = new ClientCredential(_clientId, _appKey);
+                            var tenantId = context.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
+                            var signedInUserId = context.AuthenticationTicket.Identity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                            AuthenticationContext authContext = new AuthenticationContext(aadInstance + tenantID, new ADALTokenCache(signedInUserID));
-                            AuthenticationResult result = authContext.AcquireTokenByAuthorizationCode(
-                                code, new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)), credential, graphResourceID);
+                            var authContext = new AuthenticationContext(_aadInstance + tenantId, new ADALTokenCache(signedInUserId));
+                            var result = authContext.AcquireTokenByAuthorizationCode(
+                                code, new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)), credential, _graphResourceId);
 
                             return Task.FromResult(0);
                         },
                         AuthenticationFailed = (context) =>
                         {
-                            context.OwinContext.Response.Redirect("/Home/Error");
-                            context.HandleResponse(); // Suppress the exception
+                            context.HandleResponse();
+                            context.Response.Redirect("/Error/ShowError?signIn=true&errorMessage=" + context.Exception.Message);
                             return Task.FromResult(0);
                         }
                     }
