@@ -9,18 +9,15 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
+using MoviesTestPre.Common;
+using MoviesTestPre.DAL;
 using Owin;
-using MoviesTestPre.Models;
 
 namespace MoviesTestPre
 {
     public partial class Startup
     {
-        private readonly string _clientId = ConfigurationManager.AppSettings["ida:ClientId"];
-        private readonly string _appKey = ConfigurationManager.AppSettings["ida:ClientSecret"];
-        private readonly string _graphResourceId = "https://graph.windows.net";
-        private readonly string _aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];
-        private readonly string _authority = $"{ConfigurationManager.AppSettings["ida:AADInstance"]}common";
+      
         
         //private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
@@ -32,10 +29,10 @@ namespace MoviesTestPre
             app.UseCookieAuthentication(new CookieAuthenticationOptions { });
 
             app.UseOpenIdConnectAuthentication(
-                openIdConnectOptions: new OpenIdConnectAuthenticationOptions
+                new OpenIdConnectAuthenticationOptions
                 {
-                    ClientId = _clientId,
-                    Authority = _authority,
+                    ClientId = AppSettingKey.ClientId,
+                    Authority = AppSettingKey.Authority,
                     TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters
                     {         
                         ValidateIssuer = false,
@@ -48,13 +45,13 @@ namespace MoviesTestPre
                         {
                             var code = context.Code;
 
-                            var credential = new ClientCredential(_clientId, _appKey);
+                            var credential = new ClientCredential(AppSettingKey.ClientId, AppSettingKey.AppKey);
                             var tenantId = context.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
                             var signedInUserId = context.AuthenticationTicket.Identity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                            var authContext = new AuthenticationContext(_aadInstance + tenantId, new ADALTokenCache(signedInUserId));
+                            var authContext = new AuthenticationContext(AppSettingKey.AadInstance + tenantId, new AdalTokenCache(signedInUserId));
                             var result = authContext.AcquireTokenByAuthorizationCode(
-                                code, new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)), credential, _graphResourceId);
+                                code, new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)), credential, AppSettingKey.GraphResourceId);
 
                             return Task.FromResult(0);
                         },
