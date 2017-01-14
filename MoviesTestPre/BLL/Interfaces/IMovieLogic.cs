@@ -5,6 +5,6 @@ namespace MoviesTestPre.BLL.Interfaces
 {
     public interface IMovieLogic
     {
-        Task<Dictionary<int, string>> GetAllMovies();
+        Task<IDictionary<int, string>> GetAllMovies();
     }
 }

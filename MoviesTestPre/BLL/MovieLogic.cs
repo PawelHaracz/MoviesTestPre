@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,11 +20,11 @@ namespace MoviesTestPre.BLL
             _repository = repository;
         }
 
-        public async Task<Dictionary<int, string>> GetAllMovies()
+        public async Task<IDictionary<int, string>> GetAllMovies()
         {
             var movies = await _repository.Get(_ => true);
 
-            return Mapper.Map<Dictionary<int, string>>(movies);
+            return Mapper.Map<IDictionary<int, string>>(movies);
         }
     }
 }

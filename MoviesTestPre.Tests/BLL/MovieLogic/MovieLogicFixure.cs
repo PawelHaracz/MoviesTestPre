@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -27,6 +28,15 @@ namespace MoviesTestPre.Tests.BLL.MovieLogic
         private IRepository<Movie> MockRepository()
         {
             var repository = A.Fake<IRepository<Movie>>();
+            
+            var movies  = new List<Movie>
+            {
+                new Movie {Id = 1, Name = "Test 1"},
+                new Movie {Id = 2, Name = "Test 2"}
+            };
+
+            A.CallTo(() => repository.Get(A<Expression<Func<Movie, bool>>>._))
+               .ReturnsLazily((Expression<Func<Movie, bool>> f) => movies);
 
             return repository;
         }
