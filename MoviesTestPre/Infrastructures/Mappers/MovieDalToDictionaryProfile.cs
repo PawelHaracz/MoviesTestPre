@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using AutoMapper;
 using MoviesTestPre.DAL;
 
@@ -11,7 +9,8 @@ namespace MoviesTestPre.Infrastructures.Mappers
     {
         public MovieDalToDictionaryProfile()
         {
-            CreateMap<IEnumerable<Movie>, IDictionary<int, string>>();
+            CreateMap<IEnumerable<Movie>, IDictionary<int, string>>()
+                .ConstructUsing(x => x.ToDictionary(k => k.Id, v=> v.Name ));
         }
     }
 }
