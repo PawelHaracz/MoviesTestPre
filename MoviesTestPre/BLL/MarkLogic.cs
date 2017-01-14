@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,9 +32,9 @@ namespace MoviesTestPre.BLL
             else
                 @predicate = m => true;
 
-           var marks = await _repository.Get(@predicate);
+           var marks =  await _repository.Get(@predicate);
 
-            return marks.Select(m => _mapper.Map<MarkDto>(m)); //todo refactor!!!
+            return _mapper.Map<IEnumerable<MarkDto>>(marks);
         }
     }
 }

@@ -90,6 +90,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\MarkLogic\GetAllTest.cs" />
+    <Compile Include="BLL\MarkLogic\MarkLogicFixure.cs" />
     <Compile Include="Mapper\MarkDalToMovieDtoProfile\MarkDalToMovieDtoProfileFixure.cs" />
     <Compile Include="Mapper\MarkDalToMovieDtoProfile\Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using MoviesTestPre.DAL;
@@ -18,7 +20,7 @@ namespace MoviesTestPre.Repositories
 
         public async Task<IEnumerable<Mark>> Get(Expression<Func<Mark, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Marks.Where(predicate).ToListAsync();
         }
     }
 }

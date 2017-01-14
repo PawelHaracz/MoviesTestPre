@@ -23,17 +23,16 @@ namespace MoviesTestPre.Tests.Repository.DocumentDbRepository
                 CollectionId = "test",
                 DataBaseId = "test"
             };
-
-            IDocumentClient client = A.Fake<IDocumentClient>();
             
-            MockDocumentClient(client);
+            var client = MockDocumentClient();
 
 
-            this.Fixure = new DocumentDbRepository<ExampleModel>(client,config);
+            Fixure = new DocumentDbRepository<ExampleModel>(client,config);
         }
 
-        private static void MockDocumentClient(IDocumentClient client)
+        private IDocumentClient MockDocumentClient()
         {
+            IDocumentClient client = A.Fake<IDocumentClient>();
             IOrderedQueryable<ExampleModel> returnValueCollection = new List<ExampleModel>()
                 {
                     new ExampleModel() {Name = "A", Number = 25},
@@ -51,6 +50,8 @@ namespace MoviesTestPre.Tests.Repository.DocumentDbRepository
 
             A.CallTo(() => client.ReplaceDocumentAsync(A<Uri>._, A<ExampleModel>._, A<RequestOptions>.Ignored))
               .Returns(new ResourceResponse<Document>(new Document()));
+
+            return client;
         }
     }
 

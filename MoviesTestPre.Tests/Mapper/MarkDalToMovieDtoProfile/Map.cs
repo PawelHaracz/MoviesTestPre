@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using FluentAssertions;
 using MoviesTestPre.DAL;
 using MoviesTestPre.DTO;
@@ -20,7 +21,7 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
             var mark = new Mark();
             var expectetion = new MarkDto();
 
-            var act = _mapper.Map<Mark, MarkDto>(mark);
+            var act = _mapper.Map<MarkDto>(mark);
 
             act.ShouldBeEquivalentTo(expectetion);
         }
@@ -28,7 +29,7 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
         [Fact]
         public void Check_Correct_Map_Between_Models_Mark_Object_Completely_Filled_Should_Return_Full_Mapped_MarkDto()
         {
-            var mark = new Mark()
+            var mark = new Mark
             {
                 Id = 1,
                 Comment = "test",
@@ -40,14 +41,14 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
                     Name = "Harry Potter"
                 }
             };
-            var expectetion = new MarkDto()
+            var expectetion = new MarkDto
             {
                 Comment = "test",
                 MovieId = 2,
                 UserName = "Paweł Haracz"
             };
 
-            var act = _mapper.Map<Mark, MarkDto>(mark);
+            var act = _mapper.Map<MarkDto>(mark);
 
             act.ShouldBeEquivalentTo(expectetion);
         }
@@ -55,20 +56,20 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
         [Fact]
         public void Check_Correct_Map_Between_Models_Mark_Object_Filled_Data_Which_Take_In_Maps()
         {
-            var mark = new Mark()
+            var mark = new Mark
             {
                 Comment = "test",
                 MovieId = 2,
                 UserName = "Paweł Haracz",
             };
-            var expectetion = new MarkDto()
+            var expectetion = new MarkDto
             {
                 Comment = "test",
                 MovieId = 2,
                 UserName = "Paweł Haracz"
             };
 
-            var act = _mapper.Map<Mark, MarkDto>(mark);
+            var act = _mapper.Map<MarkDto>(mark);
 
             act.ShouldBeEquivalentTo(expectetion);
         }
@@ -76,7 +77,7 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
         [Fact]
         public void Only_Comment_Is_Filled()
         {
-            var mark = new Mark()
+            var mark = new Mark
             {
                 Comment = "test",
 
@@ -100,8 +101,57 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
 
             };
 
-            var act = _mapper.Map<Mark, MarkDto>(mark);
+            var act = _mapper.Map<MarkDto>(mark);
             act.UserName.Should().BeNullOrEmpty();
+        }
+
+        [Fact]
+        public void IEnumerable_With_Empty_Marks_Should_Convert_To_IEnumerable_Empty_MarkDto()
+        {
+            IEnumerable<Mark> marks = new List<Mark>() { new Mark() };
+            IEnumerable<MarkDto> expectetion = new List<MarkDto>() { new MarkDto() };
+
+            var act = _mapper.Map<IEnumerable<MarkDto>>(marks);
+
+            act.ShouldBeEquivalentTo(expectetion);
+        }
+        [Fact]
+        public void IEnumerable_with_Completly_Filled_Mark_Should_Return_IEnumberable_With_Completly_Filled_Mark()
+        {
+            IEnumerable<Mark> marks = new List<Mark>{
+                new Mark
+                {
+                    Comment = "test2",                    
+                    MovieId = 3,
+                    UserName = "Bla bla",
+                    Id = 3
+                },
+                new Mark
+                {
+                    Id = 4,
+                    Comment = "23TR",
+                    MovieId = 5,
+                    UserName = "Haracz Paweł"
+                }
+            };
+            IEnumerable<MarkDto> expectetion = new List<MarkDto> {
+                new MarkDto
+                {
+                        Comment = "test2",
+                        MovieId = 3,
+                        UserName = "Bla bla",
+                },
+                new MarkDto
+                {
+                    Comment = "23TR",
+                    MovieId = 5,
+                    UserName = "Haracz Paweł"
+                }
+            };
+
+            var act = _mapper.Map<IEnumerable<MarkDto>>(marks);
+
+            act.ShouldBeEquivalentTo(expectetion);
         }
     }
 }
