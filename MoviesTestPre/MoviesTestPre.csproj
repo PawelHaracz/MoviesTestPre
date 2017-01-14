@@ -198,13 +198,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.DI.cs" />
     <Compile Include="BLL\Interfaces\IMarkLogic.cs" />
-    <Compile Include="Common\Modules\BllModule.cs" />
-    <Compile Include="Common\Modules\DbModule.cs" />
-    <Compile Include="Common\Modules\RepositoryModule.cs" />
+    <Compile Include="BLL\Interfaces\IMovieLogic.cs" />
+    <Compile Include="BLL\LogicBase.cs" />
+    <Compile Include="BLL\MovieLogic.cs" />
+    <Compile Include="Infrastructures\Mappers\MovieDalToDictionaryProfile.cs" />
+    <Compile Include="Infrastructures\Modules\BllModule.cs" />
+    <Compile Include="Infrastructures\Modules\DbModule.cs" />
+    <Compile Include="Infrastructures\Modules\RepositoryModule.cs" />
     <Compile Include="DAL\ApplicationDbConfiguration.cs" />
     <Compile Include="DTO\MarkDto.cs" />
     <Compile Include="BLL\MarkLogic.cs" />
-    <Compile Include="Common\AppSettingKey.cs" />
+    <Compile Include="Infrastructures\AppSettingKey.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -212,7 +216,7 @@
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DAL\Mark.cs" />
     <Compile Include="DAL\Movie.cs" />
-    <Compile Include="Common\Extensions\ClaimsPrincipalExtension.cs" />
+    <Compile Include="Infrastructures\Extensions\ClaimsPrincipalExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,11 +224,12 @@
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="DAL\Roles.cs" />
     <Compile Include="DAL\UserTokenCache.cs" />
-    <Compile Include="Common\Mappers\MarkDalToMovieDtoProfile.cs" />
-    <Compile Include="Common\Modules\MapperModule.cs" />
+    <Compile Include="Infrastructures\Mappers\MarkDalToMovieDtoProfile.cs" />
+    <Compile Include="Infrastructures\Modules\MapperModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\MarkRepository.cs" />
+    <Compile Include="Repositories\MovieRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +278,7 @@
     <Content Include="Views\Error\ShowError.cshtml" />
     <Content Include="Views\Error\Reauth.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,7 +2,7 @@
 using MoviesTestPre.DAL;
 using MoviesTestPre.DTO;
 
-namespace MoviesTestPre.Common.Mappers
+namespace MoviesTestPre.Infrastructures.Mappers
 {
     public class MarkDalToMovieDtoProfile : Profile
     {

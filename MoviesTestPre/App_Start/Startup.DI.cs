@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using MoviesTestPre.Common.Modules;
+using MoviesTestPre.Infrastructures.Modules;
 using Owin;
     
 namespace MoviesTestPre

@@ -2,7 +2,7 @@
 using Autofac;
 using AutoMapper;
 
-namespace MoviesTestPre.Common.Modules
+namespace MoviesTestPre.Infrastructures.Modules
 {
     public class MapperModule : Module
     {
@@ -15,7 +15,7 @@ namespace MoviesTestPre.Common.Modules
        
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register<IMapper>((ctx,param) => _mapperFunc()).SingleInstance();
+            builder.Register((ctx,param) => _mapperFunc()).SingleInstance();
         }
     }
 }

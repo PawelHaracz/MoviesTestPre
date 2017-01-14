@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IdentityModel.Claims;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
-using MoviesTestPre.Common;
+using MoviesTestPre.Infrastructures;
 using MoviesTestPre.DAL;
 using Owin;
 

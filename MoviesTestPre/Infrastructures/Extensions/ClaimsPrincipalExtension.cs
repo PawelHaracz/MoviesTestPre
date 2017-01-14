@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace MoviesTestPre.Common.Extensions
+namespace MoviesTestPre.Infrastructures.Extensions
 {
     public static class ClaimsPrincipalExtension
     {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Autofac;
+﻿using Autofac;
 using MoviesTestPre.DAL;
 
-namespace MoviesTestPre.Common.Modules
+namespace MoviesTestPre.Infrastructures.Modules
 {
     public class DbModule : Module
     {

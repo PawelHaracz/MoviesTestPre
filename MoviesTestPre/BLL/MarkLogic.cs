@@ -12,14 +12,13 @@ using System.Linq.Expressions;
 
 namespace MoviesTestPre.BLL
 {
-    public class MarkLogic : IMarkLogic
+    public class MarkLogic : LogicBase, IMarkLogic
     {
-        private readonly IMapper _mapper;
         private readonly IRepository<Mark> _repository;
 
         public MarkLogic(IMapper mapper, IRepository<Mark> repository)
+            :base(mapper)
         {
-            _mapper = mapper;
             _repository = repository;
         }
 
@@ -34,7 +33,12 @@ namespace MoviesTestPre.BLL
 
            var marks =  await _repository.Get(@predicate);
 
-            return _mapper.Map<IEnumerable<MarkDto>>(marks);
+            return Mapper.Map<IEnumerable<MarkDto>>(marks);
+        }
+
+        public Task Create(MarkDto model)
+        {
+            throw new NotImplementedException();
         }
     }
 }

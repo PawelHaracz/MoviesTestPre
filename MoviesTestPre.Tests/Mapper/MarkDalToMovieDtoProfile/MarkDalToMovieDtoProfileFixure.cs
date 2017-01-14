@@ -13,7 +13,7 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
         public MarkDalToMovieDtoProfileFixure()
         {
             var config = new MapperConfiguration(cfg => {
-                cfg.AddProfile<Common.Mappers.MarkDalToMovieDtoProfile>();
+                cfg.AddProfile<Infrastructures.Mappers.MarkDalToMovieDtoProfile>();
                 //cfg.CreateMap<Source, Dest>();
             });
 
