@@ -201,6 +201,7 @@
     <Compile Include="Common\Modules\BllModule.cs" />
     <Compile Include="Common\Modules\DbModule.cs" />
     <Compile Include="Common\Modules\RepositoryModule.cs" />
+    <Compile Include="DAL\ApplicationDbConfiguration.cs" />
     <Compile Include="DTO\MarkDto.cs" />
     <Compile Include="BLL\MarkLogic.cs" />
     <Compile Include="Common\AppSettingKey.cs" />

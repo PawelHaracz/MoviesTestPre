@@ -4,5 +4,27 @@
     ViewBag.Title = "Movies";
 }
 
-<h2>Movies</h2>
-<p>@Model</p>
+<div class="page-header">
+    <h2>Movies</h2>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Comment</th>
+                <th>User</th>
+            </tr>
+        </thead>
+            <tbody>
+                @{
+                    foreach (var markDto in @Model)
+                    {
+                        <tr>
+                            <td>@markDto.Comment</td>
+                            <td>@markDto.UserName</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+</table>
+</div>

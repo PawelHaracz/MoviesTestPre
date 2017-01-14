@@ -32,8 +32,8 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
             var marks = new List<Mark>
             {
                 new Mark {Comment = "test 1",Id=1, Movie = new Movie {Id =2 , Name = "Firs Movie"}, MovieId = 2, UserName = "Paweł Haracz"},
-                new Mark {Comment = "test 2",Id=1, Movie = new Movie {Id =2 , Name = "Firs Movie"}, MovieId = 2, UserName = "Jakub Testowy"},
-                new Mark {Comment = "test 3",Id=1, Movie = new Movie {Id =3 , Name = "Second Movie"}, MovieId = 3, UserName = "Paweł Haracz"}
+                new Mark {Comment = "test 2",Id=2, Movie = new Movie {Id =2 , Name = "Firs Movie"}, MovieId = 2, UserName = "Jakub Testowy"},
+                new Mark {Comment = "test 3",Id=3, Movie = new Movie {Id =3 , Name = "Second Movie"}, MovieId = 3, UserName = "Paweł Haracz"}
             };
 
           

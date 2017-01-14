@@ -25,9 +25,9 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
         {
             IEnumerable<MarkDto> marks = new List<MarkDto>
             {
-                new MarkDto {Comment = "test 1", MovieId = 2, UserName = "Paweł Haracz"},
-                new MarkDto {Comment = "test 2", MovieId = 2, UserName = "Jakub Testowy"},
-                new MarkDto {Comment = "test 3", MovieId = 3, UserName = "Paweł Haracz"}
+                new MarkDto {Comment = "test 1", MovieId = 2, UserName = "Paweł Haracz", Id = 1},
+                new MarkDto {Comment = "test 2", MovieId = 2, UserName = "Jakub Testowy",Id = 2},
+                new MarkDto {Comment = "test 3", MovieId = 3, UserName = "Paweł Haracz", Id = 3}
             };
 
             var act = await _logic.GetAll("Pawel", true);
@@ -40,8 +40,8 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
         {
             IEnumerable<MarkDto> marks = new List<MarkDto>
             {
-                new MarkDto {Comment = "test 1", MovieId = 2, UserName = "Paweł Haracz"},
-                new MarkDto {Comment = "test 3", MovieId = 3, UserName = "Paweł Haracz"}
+                new MarkDto {Comment = "test 1", MovieId = 2, UserName = "Paweł Haracz", Id = 1},
+                new MarkDto {Comment = "test 3", MovieId = 3, UserName = "Paweł Haracz", Id = 3}
             };
 
             var act = await _logic.GetAll("Paweł Haracz", false);

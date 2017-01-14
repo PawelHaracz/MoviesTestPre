@@ -45,7 +45,8 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
             {
                 Comment = "test",
                 MovieId = 2,
-                UserName = "Paweł Haracz"
+                UserName = "Paweł Haracz",
+                Id = 1,
             };
 
             var act = _mapper.Map<MarkDto>(mark);
@@ -121,7 +122,7 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
             IEnumerable<Mark> marks = new List<Mark>{
                 new Mark
                 {
-                    Comment = "test2",                    
+                    Comment = "test2",
                     MovieId = 3,
                     UserName = "Bla bla",
                     Id = 3
@@ -140,12 +141,14 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
                         Comment = "test2",
                         MovieId = 3,
                         UserName = "Bla bla",
+                        Id = 3
                 },
                 new MarkDto
                 {
                     Comment = "23TR",
                     MovieId = 5,
-                    UserName = "Haracz Paweł"
+                    UserName = "Haracz Paweł",
+                    Id = 4,
                 }
             };
 
