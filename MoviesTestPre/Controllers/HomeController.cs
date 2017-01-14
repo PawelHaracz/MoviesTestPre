@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MoviesTestPre.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         

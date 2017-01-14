@@ -45,6 +45,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.0\lib\net451\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.0\lib\net451\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.Owin.4.0.0\lib\net451\Autofac.Integration.Mvc.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Owin.4.0.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
@@ -176,7 +192,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\Startup.DI.cs" />
     <Compile Include="BLL\Interfaces\IMarkLogic.cs" />
+    <Compile Include="Common\Modules\BllModule.cs" />
+    <Compile Include="Common\Modules\DbModule.cs" />
+    <Compile Include="Common\Modules\RepositoryModule.cs" />
     <Compile Include="DTO\MarkDto.cs" />
     <Compile Include="BLL\MarkLogic.cs" />
     <Compile Include="Common\AppSettingKey.cs" />
@@ -187,7 +207,7 @@
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DAL\Mark.cs" />
     <Compile Include="DAL\Movie.cs" />
-    <Compile Include="Extensions\ClaimsPrincipalExtension.cs" />
+    <Compile Include="Common\Extensions\ClaimsPrincipalExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,8 +215,11 @@
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="DAL\Roles.cs" />
     <Compile Include="DAL\UserTokenCache.cs" />
-    <Compile Include="Mappers\MarkDalToMovieDtoProfile.cs" />
+    <Compile Include="Common\Mappers\MarkDalToMovieDtoProfile.cs" />
+    <Compile Include="Common\Modules\MapperModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\MarkRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +231,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Compile Include="App_Start\Startup.Mapper.cs" />
     <None Include="Properties\PublishProfiles\MoviesTestPre1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\MoviesTestPre1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
