@@ -1,0 +1,111 @@
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+
+namespace MoviesTestPre.Tests.ExampleData
+{
+    public class FakeJsonMovie
+    {
+        public JObject JsonResponse()
+        {
+            return new JObject(new JProperty("page", 1),
+                new JProperty("results",
+                    new JArray(
+                        new JObject(new JProperty("poster_path", "/5gJkVIVU7FDp7AfRAbPSvvdbre2.jpg"),
+                            new JProperty("adult", false),
+                            new JProperty("overview",
+                                "A spacecraft traveling to a distant colony planet and transporting thousands of people has a malfunction in its sleep chambers. As a result, two passengers are awakened 90 years early."),
+                            new JProperty("release_date", "2016-12-25"),
+                            new JProperty("genre_ids", new JArray(12, 18, 10749, 878)), new JProperty("id", 274870),
+                            new JProperty("original_title", "Passengers"), new JProperty("original_language", "en"),
+                            new JProperty("title", "Passengers"),
+                            new JProperty("backdrop_path", "/5EW4TR3fWEqpKsWysNcBMtz9Sgp.jpg"),
+                            new JProperty("popularity", 82.263426), new JProperty("vote_count", 622),
+                            new JProperty("video", false), new JProperty("vote_average", 6.2)),
+                        new JObject(new JProperty("poster_path", "/qjiskwlV1qQzRCjpV0cL9pEMF9a.jpg"),
+                            new JProperty("adult", false),
+                            new JProperty("overview",
+                                "A rogue band of resistance fighters unite for a mission to steal the Death Star plans and bring a new hope to the galaxy."),
+                            new JProperty("release_date", "2016-12-16"),
+                            new JProperty("genre_ids", new JArray(28, 12, 14, 878, 53, 10752)),
+                            new JProperty("id", 330459), new JProperty("original_title", "Rogue One: A Star Wars Story"),
+                            new JProperty("original_language", "en"),
+                            new JProperty("title", "Rogue One: A Star Wars Story"),
+                            new JProperty("backdrop_path", "/tZjVVIYXACV4IIIhXeIM59ytqwS.jpg"),
+                            new JProperty("popularity", 80.320645), new JProperty("vote_count", 1694),
+                            new JProperty("video", false), new JProperty("vote_average", 7.2)),
+                        new JObject(new JProperty("poster_path", "/ylXCdC106IKiarftHkcacasaAcb.jpg"),
+                            new JProperty("adult", false),
+                            new JProperty("overview",
+                                "Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced with decisions that begin to fray the fragile fabric of their love affair, and the dreams they worked so hard to maintain in each other threaten to rip them apart."),
+                            new JProperty("release_date", "2017-01-06"),
+                            new JProperty("genre_ids", new JArray(10749, 35, 18, 10402)), new JProperty("id", 313369),
+                            new JProperty("original_title", "La La Land"), new JProperty("original_language", "en"),
+                            new JProperty("title", "La La Land"),
+                            new JProperty("backdrop_path", "/nadTlnTE6DdgmYsN4iWc2a2wiaI.jpg"),
+                            new JProperty("popularity", 20.131656), new JProperty("vote_count", 260),
+                            new JProperty("video", false), new JProperty("vote_average", 8)),
+                        new JObject(new JProperty("poster_path", "/jXDV4Y98kxZcpmnr2JV6CB8OEGr.jpg"),
+                            new JProperty("adult", false),
+                            new JProperty("overview",
+                                @"A dad forms a bitter rivalry with his daughter's young rich boyfriend."),
+                            new JProperty("release_date", "2017-01-20"), new JProperty("genre_ids", new JArray(35)),
+                            new JProperty("id", 356305), new JProperty("original_title", "Why Him?"),
+                            new JProperty("original_language", "en"), new JProperty("title", "Why Him?"),
+                            new JProperty("backdrop_path", "/bob0KKKBe54zlNwRzRI3nvAtYlo.jpg"),
+                            new JProperty("popularity", 7.959776), new JProperty("vote_count", 75),
+                            new JProperty("video", false), new JProperty("vote_average", 6)),
+                        new JObject(new JProperty("poster_path", "/lKc1fXCqHXQTg5Fo1PEEFYWJpjz.jpg"),
+                            new JProperty("adult", false),
+                            new JProperty("overview",
+                                @"Father and son coroners who receive a mysterious homicide victim with no apparent cause of death. As they attempt to identify the beautiful young \""Jane Doe,\"" they discover increasingly bizarre clues that hold the key to her terrifying secrets."),
+                            new JProperty("release_date", "2017-01-13"),
+                            new JProperty("genre_ids", new JArray(27, 9648)), new JProperty("id", 397243),
+                            new JProperty("original_title", "The Autopsy of Jane Doe"),
+                            new JProperty("original_language", "en"), new JProperty("title", "The Autopsy of Jane Doe"),
+                            new JProperty("backdrop_path", "/pSLt04KEQcPQVEEBSsyF3NVAdqj.jpg"),
+                            new JProperty("popularity", 4.928658), new JProperty("vote_count", 77),
+                            new JProperty("video", false), new JProperty("vote_average", 6.5)),
+                        new JObject(new JProperty("poster_path", "/9rWLTHJaiA2Bhfh5Bqho6tiVtnI.jpg"),
+                            new JProperty("adult", false), new JProperty("overview", ""),
+                            new JProperty("release_date", "2017-01-13"), new JProperty("genre_ids", new JArray(53)),
+                            new JProperty("id", 432784), new JProperty("original_title", "Konwój"),
+                            new JProperty("original_language", "pl"), new JProperty("title", "Konwój"),
+                            new JProperty("backdrop_path", null), new JProperty("popularity", 2.303678),
+                            new JProperty("vote_count", 0), new JProperty("video", false),
+                            new JProperty("vote_average", 0)),
+                        new JObject(new JProperty("poster_path", null), new JProperty("adult", false),
+                            new JProperty("overview", ""), new JProperty("release_date", "2017-01-20"),
+                            new JProperty("genre_ids", new JArray()), new JProperty("id", 432785),
+                            new JProperty("original_title", "Las, 4 rano"), new JProperty("original_language", "pl"),
+                            new JProperty("title", "Las, 4 rano"), new JProperty("backdrop_path", null),
+                            new JProperty("popularity", 1.496493), new JProperty("vote_count", 0),
+                            new JProperty("video", false), new JProperty("vote_average", 0)),
+                        new JObject(new JProperty("poster_path", "/2v13MsDkAK9BM5NqjdSt4azpRMh.jpg"),
+                            new JProperty("adult", false), new JProperty("overview", ""),
+                            new JProperty("release_date", "2017-01-06"), new JProperty("genre_ids", new JArray(35)),
+                            new JProperty("id", 432782), new JProperty("original_title", "Po prostu przyjaźń"),
+                            new JProperty("original_language", "pl"), new JProperty("title", "Po prostu przyjaźń"),
+                            new JProperty("backdrop_path", null), new JProperty("popularity", 1.426806),
+                            new JProperty("vote_count", 0), new JProperty("video", false),
+                            new JProperty("vote_average", 0)))),
+                new JProperty("dates",
+                    new JObject(new JProperty("maximum", "2017-01-20"), new JProperty("minimum", "2016-12-09"))),
+                new JProperty("total_pages", 1), new JProperty("total_results", 8));
+        }
+
+        public IEnumerable<string> ConvertedJson()
+        {
+            return new List<string>()
+                {
+                    "Passengers",
+                    "Rogue One: A Star Wars Story",
+                    "La La Land",
+                    "Why Him?",
+                    "The Autopsy of Jane Doe",
+                    "Konwój",
+                    "Las, 4 rano",
+                    "Po prostu przyjaźń",
+                };
+        }
+    }
+}
