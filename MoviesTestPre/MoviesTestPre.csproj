@@ -280,6 +280,7 @@
     <Content Include="Views\Mark\Index.cshtml" />
     <Content Include="Views\Mark\Create.cshtml" />
     <Content Include="Views\Mark\Edit.cshtml" />
+    <Content Include="Views\Mark\_MovieName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

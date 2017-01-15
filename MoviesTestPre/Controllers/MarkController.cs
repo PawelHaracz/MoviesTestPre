@@ -21,7 +21,7 @@ namespace MoviesTestPre.Controllers
             _moviesLogic = moviesLogic;
         }
         [HttpGet]
-        public async Task<ActionResult >Index()
+        public async Task<ActionResult> Index()
         {
             var user = HttpContext.GetOwinContext().Authentication.User;
 
@@ -58,7 +58,7 @@ namespace MoviesTestPre.Controllers
             var movies = await _moviesLogic.GetAllMovies();
             var mark = await _markLogic.Get(id);
 
-            var model = new Tuple<IDictionary<int,string>,MarkDto>(movies,mark);
+            var model = new Tuple<IDictionary<int, string>, MarkDto>(movies, mark);
 
             return View(model);
         }
@@ -70,13 +70,23 @@ namespace MoviesTestPre.Controllers
 
             var model = new MarkDto()
             {
-                Id =  id,
+                Id = id,
                 Comment = comment,
                 MovieId = movieId,
                 UserName = user.Identity.Name
             };
             await _markLogic.Update(model);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult _MovieName(int movieId)
+        {
+            //Because CHILD ACTION IN MVC 5 DOES NOT SUPPORT ASYNC
+            var movieName = Task.Run(async () => await _moviesLogic.GetMovieName(movieId)).Result;
+
+            return PartialView("_MovieName", movieName);
         }
     }
 }

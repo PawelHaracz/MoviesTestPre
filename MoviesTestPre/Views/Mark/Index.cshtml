@@ -16,6 +16,7 @@
             <tr>
                 <th>Comment</th>
                 <th>User</th>
+                <th>Movie</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,10 @@
                             </a>
                         </td>
                         <td>@markDto.UserName</td>
+                        <td>
+                            @Html.Action("_MovieName", new { movieId = markDto.MovieId })
+                           
+                        </td>
                     </tr>
                 }
             }

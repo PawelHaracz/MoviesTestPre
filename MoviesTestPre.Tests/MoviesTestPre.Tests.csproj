@@ -96,6 +96,7 @@
     <Compile Include="BLL\MarkLogic\MarkLogicFixure.cs" />
     <Compile Include="BLL\MarkLogic\UpdateTest.cs" />
     <Compile Include="BLL\MovieLogic\GetAllMoviesTest.cs" />
+    <Compile Include="BLL\MovieLogic\GetMovieNameTest.cs" />
     <Compile Include="BLL\MovieLogic\MovieLogicFixure.cs" />
     <Compile Include="Mapper\MarkDalToMovieDtoProfile\MarkDalToMovieDtoProfileFixure.cs" />
     <Compile Include="Mapper\MarkDalToMovieDtoProfile\Map.cs" />

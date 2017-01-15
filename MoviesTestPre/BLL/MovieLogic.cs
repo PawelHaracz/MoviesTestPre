@@ -23,5 +23,12 @@ namespace MoviesTestPre.BLL
 
             return Mapper.Map<IDictionary<int, string>>(movies);
         }
+
+        public async Task<string> GetMovieName(int id)
+        {
+            var movie = await _repository.Find(id);
+
+            return movie.Name;
+        }
     }
 }
