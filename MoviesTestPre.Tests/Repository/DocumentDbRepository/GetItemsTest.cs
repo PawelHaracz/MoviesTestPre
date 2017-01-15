@@ -39,7 +39,7 @@ namespace MoviesTestPre.Tests.Repository.DocumentDbRepository
         {
             var expectation = new List<ExampleModel>()
             {
-                new ExampleModel() {Name = "A", Number = 25}
+                new ExampleModel {Name = "A", Number = 25}
 
             };
 

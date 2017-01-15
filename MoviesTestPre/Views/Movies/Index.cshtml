@@ -8,6 +8,9 @@
     <h2>Movies</h2>
 </div>
 <div class="table-responsive">
+    <a href="@Url.Action("Create", "Movies")" class="btn btn-link">
+        <span>Create</span>
+    </a>
     <table class="table">
         <thead>
             <tr>
@@ -15,16 +18,16 @@
                 <th>User</th>
             </tr>
         </thead>
-            <tbody>
-                @{
-                    foreach (var markDto in @Model)
-                    {
-                        <tr>
-                            <td>@markDto.Comment</td>
-                            <td>@markDto.UserName</td>
-                        </tr>
-                    }
+        <tbody>
+            @{
+                foreach (var markDto in @Model)
+                {
+                    <tr>
+                        <td>@markDto.Comment</td>
+                        <td>@markDto.UserName</td>
+                    </tr>
                 }
-            </tbody>
-</table>
+            }
+        </tbody>
+    </table>
 </div>

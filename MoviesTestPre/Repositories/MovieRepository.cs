@@ -23,5 +23,13 @@ namespace MoviesTestPre.Repositories
         {
             return await _dbContext.Movies.Where(predicate).ToListAsync();
         }
+
+        public async Task<int> Add(Movie model)
+        {
+            var movie = _dbContext.Movies.Add(model);
+            await _dbContext.SaveChangesAsync();
+
+            return movie.Id;
+        }
     }
 }

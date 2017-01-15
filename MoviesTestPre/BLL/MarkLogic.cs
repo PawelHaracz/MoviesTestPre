@@ -24,21 +24,25 @@ namespace MoviesTestPre.BLL
 
         public async Task<IEnumerable<MarkDto>> GetAll(string userName, bool isAdmin = false)
         {
-            Expression<Func<Mark, bool>> @predicate;
+            Expression<Func<Mark, bool>> expression;
 
             if (isAdmin == false)
-                @predicate = m => m.UserName.Equals(userName, StringComparison.CurrentCultureIgnoreCase);
+                expression = m => m.UserName.Equals(userName, StringComparison.CurrentCultureIgnoreCase);
             else
-                @predicate = m => true;
+                expression = m => true;
 
-           var marks =  await _repository.Get(@predicate);
+           var marks =  await _repository.Get(expression);
 
             return Mapper.Map<IEnumerable<MarkDto>>(marks);
         }
 
-        public Task Create(MarkDto model)
+        public async Task<int> Create(MarkDto model)
         {
-            throw new NotImplementedException();
+            var mark = Mapper.Map<Mark>(model);
+
+            var id = await _repository.Add(mark);
+
+            return id;
         }
     }
 }

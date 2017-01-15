@@ -1,6 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using FluentAssertions;
 using MoviesTestPre.BLL.Interfaces;
+using MoviesTestPre.DTO;
 using Xunit;
 
 namespace MoviesTestPre.Tests.BLL.MarkLogic
@@ -9,15 +10,24 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
     {
         private readonly IMarkLogic _logic;
 
-        public CreateTest(IMarkLogic logic)
+        public CreateTest(MarkLogicFixure fixure)
         {
-            _logic = logic;
+            _logic = fixure.Logic;
         }
 
         [Fact]
-        public async Task TODO()
+        public async Task TODo()
         {
-            throw new NotImplementedException();
+            var mark = new MarkDto
+            {
+                Comment = "Test",
+                MovieId = 2,
+                UserName = "Pawel Haracz"
+            };
+
+            var act = await _logic.Create(mark);
+
+            act.Should().Be(4);
         }
     }
 }

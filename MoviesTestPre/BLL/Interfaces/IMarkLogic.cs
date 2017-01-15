@@ -9,6 +9,6 @@ namespace MoviesTestPre.BLL.Interfaces
     public interface IMarkLogic
     {
         Task<IEnumerable<MarkDto>> GetAll(string userName, bool isAdmin = false);
-        Task Create(MarkDto model);
+        Task<int> Create(MarkDto model);
     }
 }

@@ -9,6 +9,7 @@ namespace MoviesTestPre.Infrastructures.Mappers
         public MarkDalToMovieDtoProfile()
         {
             CreateMap<Mark, MarkDto>();
+            CreateMap<MarkDto, Mark>();
         }
     }
 }

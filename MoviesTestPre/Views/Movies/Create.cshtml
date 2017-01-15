@@ -2,6 +2,37 @@
 
 @{
     ViewBag.Title = "Create Mark";
+}
 
+<h2>Create Mark</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group row">
+        <label for="movieId" class="col-2 col-form-label">Movie</label>
+        <div class="col-10">
+            <select class="form-control" id="movieId" name="movieId" required>
+                <option value="" disabled selected>Select movie</option>
+                @foreach (var movie in @Model)
+                {
+                    <option value="@movie.Key">@movie.Value</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="comment" class="col-2 col-form-label">Coment</label>
+        <div class="col-10">
+            <textarea class="form-control" value="Artisanal kale" id="comment" name="comment"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" id="Submit" class="btn btn-default"/>
+        </div>
+    </div>
 
-<h2>title</h2>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

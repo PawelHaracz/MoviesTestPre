@@ -42,6 +42,13 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
                     return enumerable;
                 });
 
+            A.CallTo(() => repository.Add(A<Mark>._))
+                .ReturnsLazily((Mark m) =>
+                {
+                    marks.Add(m);
+                    return marks.Count;
+                });
+
             return repository;
         }
     }

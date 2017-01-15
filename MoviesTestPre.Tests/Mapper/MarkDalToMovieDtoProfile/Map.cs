@@ -116,6 +116,7 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
 
             act.ShouldBeEquivalentTo(expectetion);
         }
+
         [Fact]
         public void IEnumerable_with_Completly_Filled_Mark_Should_Return_IEnumberable_With_Completly_Filled_Mark()
         {
@@ -153,6 +154,31 @@ namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile
             };
 
             var act = _mapper.Map<IEnumerable<MarkDto>>(marks);
+
+            act.ShouldBeEquivalentTo(expectetion);
+        }
+
+        [Fact]
+        public void MarkDto_To_Mark()
+        {
+            var mark = new MarkDto
+            {
+                Comment = "test",
+                MovieId = 2,
+                UserName = "Paweł Haracz",
+                Id = 1,
+            };
+
+            var expectetion = new Mark
+            {
+                Id = 1,
+                Comment = "test",
+                MovieId = 2,
+                UserName = "Paweł Haracz",
+                Movie = null
+            };
+
+            var act = _mapper.Map<Mark>(mark);
 
             act.ShouldBeEquivalentTo(expectetion);
         }
