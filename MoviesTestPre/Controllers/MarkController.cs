@@ -11,11 +11,11 @@ using MoviesTestPre.Infrastructures.Extensions;
 namespace MoviesTestPre.Controllers
 {
     [Authorize]
-    public class MoviesController : Controller
+    public class MarkController : Controller
     {
         private readonly IMarkLogic _markLogic;
         private readonly IMovieLogic _moviesLogic;
-        public MoviesController(IMarkLogic markLogic, IMovieLogic moviesLogic)
+        public MarkController(IMarkLogic markLogic, IMovieLogic moviesLogic)
         {
             _markLogic = markLogic;
             _moviesLogic = moviesLogic;

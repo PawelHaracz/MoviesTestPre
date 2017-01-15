@@ -5,10 +5,10 @@
 }
 
 <div class="page-header">
-    <h2>Movies</h2>
+    <h2>Marks</h2>
 </div>
 <div class="table-responsive">
-    <a href="@Url.Action("Create", "Movies")" class="btn btn-link">
+    <a href="@Url.Action("Create", "Mark")" class="btn btn-link">
         <span>Create</span>
     </a>
     <table class="table">
@@ -24,7 +24,7 @@
                 {
                     <tr>
                         <td>
-                            <a href="@Url.Action("Edit", "Movies", new {id = markDto.Id})" class="btn btn-link">
+                            <a href="@Url.Action("Edit", "Mark", new {id = markDto.Id})" class="btn btn-link">
                                 <span>@markDto.Comment</span>
                             </a>
                         </td>

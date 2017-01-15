@@ -212,7 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="DAL\Mark.cs" />
     <Compile Include="DAL\Movie.cs" />
@@ -277,9 +277,9 @@
     <Content Include="Service References\AzureAD\ConnectedService.json" />
     <Content Include="Views\Error\ShowError.cshtml" />
     <Content Include="Views\Error\Reauth.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
-    <Content Include="Views\Movies\Create.cshtml" />
-    <Content Include="Views\Movies\Edit.cshtml" />
+    <Content Include="Views\Mark\Index.cshtml" />
+    <Content Include="Views\Mark\Create.cshtml" />
+    <Content Include="Views\Mark\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
