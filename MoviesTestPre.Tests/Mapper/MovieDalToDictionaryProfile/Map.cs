@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using FluentAssertions;
 using MoviesTestPre.DAL;
-using MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile;
 using Xunit;
 
 namespace MoviesTestPre.Tests.Mapper.MovieDalToDictionaryProfile

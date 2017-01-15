@@ -11,7 +11,7 @@ using MoviesTestPre.Repositories.Interfaces;
 
 namespace MoviesTestPre.Tests.BLL.MarkLogic
 {
-    public class MarkLogicFixure 
+    public class MarkLogicFixure
     {
         public readonly IMarkLogic Logic;
 
@@ -34,7 +34,7 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
                 new Mark {Comment = "test 3",Id=3, Movie = new Movie {Id =3 , Name = "Second Movie"}, MovieId = 3, UserName = "Paweł Haracz"}
             };
 
-          
+
             A.CallTo(() => repository.Get(A<Expression<Func<Mark, bool>>>._))
                 .ReturnsLazily((Expression<Func<Mark, bool>> f) =>
                 {
@@ -47,6 +47,23 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
                 {
                     marks.Add(m);
                     return marks.Count;
+                });
+
+            A.CallTo(() => repository.Find(A<int>._))
+                .ReturnsLazily((int id) => marks.Single(m => m.Id == id));
+
+            A.CallTo(() => repository.Edit(A<Mark>._))
+                .ReturnsLazily((Mark m) =>
+                {
+                    var mark = marks.Find(obj => obj.Id == m.Id);
+                    mark.Movie = m.Movie;
+                    mark.UserName = m.UserName;
+                    mark.Comment = m.Comment;
+                    mark.MovieId = m.MovieId;
+                    mark.Id = m.Id;
+
+                    return mark.Id;
+
                 });
 
             return repository;

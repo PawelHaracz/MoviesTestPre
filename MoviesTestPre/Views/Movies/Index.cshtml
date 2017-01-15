@@ -23,7 +23,11 @@
                 foreach (var markDto in @Model)
                 {
                     <tr>
-                        <td>@markDto.Comment</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Movies", new {id = markDto.Id})" class="btn btn-link">
+                                <span>@markDto.Comment</span>
+                            </a>
+                        </td>
                         <td>@markDto.UserName</td>
                     </tr>
                 }

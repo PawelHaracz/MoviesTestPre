@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using MoviesTestPre.BLL.Interfaces;
@@ -18,7 +20,7 @@ namespace MoviesTestPre.Controllers
             _markLogic = markLogic;
             _moviesLogic = moviesLogic;
         }
-
+        [HttpGet]
         public async Task<ActionResult >Index()
         {
             var user = HttpContext.GetOwinContext().Authentication.User;
@@ -47,6 +49,33 @@ namespace MoviesTestPre.Controllers
                 UserName = user.Identity.Name
             };
             await _markLogic.Create(model);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Edit(int id)
+        {
+            var movies = await _moviesLogic.GetAllMovies();
+            var mark = await _markLogic.Get(id);
+
+            var model = new Tuple<IDictionary<int,string>,MarkDto>(movies,mark);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(int id, string comment, int movieId)
+        {
+            var user = HttpContext.GetOwinContext().Authentication.User;
+
+            var model = new MarkDto()
+            {
+                Id =  id,
+                Comment = comment,
+                MovieId = movieId,
+                UserName = user.Identity.Name
+            };
+            await _markLogic.Update(model);
             return RedirectToAction("Index");
         }
     }

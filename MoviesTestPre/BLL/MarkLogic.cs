@@ -44,5 +44,19 @@ namespace MoviesTestPre.BLL
 
             return id;
         }
+
+        public async Task<MarkDto> Get(int id)
+        {
+            var mark = await _repository.Find(id);
+
+            return Mapper.Map<MarkDto>(mark);
+        }
+
+        public async Task<int> Update(MarkDto model)
+        {
+            var mark = Mapper.Map<Mark>(model);
+            var id = await _repository.Edit(mark);
+            return id;
+        }
     }
 }

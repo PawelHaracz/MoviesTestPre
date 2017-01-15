@@ -10,5 +10,7 @@ namespace MoviesTestPre.BLL.Interfaces
     {
         Task<IEnumerable<MarkDto>> GetAll(string userName, bool isAdmin = false);
         Task<int> Create(MarkDto model);
+        Task<MarkDto> Get(int id);
+        Task<int> Update(MarkDto model);
     }
 }

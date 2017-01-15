@@ -16,7 +16,7 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
         }
 
         [Fact]
-        public async Task TODo()
+        public async Task Mark_Has_Filled_Comment_MovieId_UserName_Should_Corect_Add_To_Collection()
         {
             var mark = new MarkDto
             {
@@ -27,7 +27,17 @@ namespace MoviesTestPre.Tests.BLL.MarkLogic
 
             var act = await _logic.Create(mark);
 
-            act.Should().Be(4);
+            act.Should().BeGreaterThan(3);
+        }
+
+        [Fact]
+        public async Task Empty_Mark_Should_Be_Ok()
+        {
+            var mark = new MarkDto();
+            
+            var act = await _logic.Create(mark);
+
+            act.Should().BeGreaterThan(3);
         }
     }
 }

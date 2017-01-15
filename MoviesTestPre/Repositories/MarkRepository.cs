@@ -29,5 +29,19 @@ namespace MoviesTestPre.Repositories
           await  _dbContext.SaveChangesAsync();  
           return mark.Id;
         }
+
+        public async Task<Mark> Find(int id)
+        {
+            var mark = await _dbContext.Marks.FindAsync(id);
+
+            return mark;
+        }
+
+        public async Task<int> Edit(Mark model)
+        {
+            _dbContext.Entry(model).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+            return model.Id;
+        }
     }
 }

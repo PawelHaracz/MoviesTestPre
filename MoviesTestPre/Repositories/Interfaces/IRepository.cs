@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using MoviesTestPre.DAL;
 
 namespace MoviesTestPre.Repositories.Interfaces
 {
@@ -11,5 +11,8 @@ namespace MoviesTestPre.Repositories.Interfaces
         Task<IEnumerable<T>> Get(Expression<Func<T, bool>> predicate);
 
         Task<int> Add(T model);
+
+        Task<T> Find(int id);
+        Task<int> Edit(T model);
     }
 }
