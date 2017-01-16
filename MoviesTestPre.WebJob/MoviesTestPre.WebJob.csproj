@@ -90,6 +90,7 @@
     <Compile Include="Converters\MovieNowPlayingConverter.cs" />
     <Compile Include="Interfaces\IConverterJson.cs" />
     <Compile Include="Interfaces\IMovieService.cs" />
+    <Compile Include="Setting.cs" />
     <Compile Include="MovieService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Functions.cs" />

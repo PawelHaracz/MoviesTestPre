@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
+using MoviesTestPre.WebJob.Converters;
+using MoviesTestPre.WebJob.Interfaces;
 
 namespace MoviesTestPre.WebJob
 {
@@ -14,9 +16,13 @@ namespace MoviesTestPre.WebJob
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
-            var host = new JobHost();
-            // The following code ensures that the WebJob will be running continuously
-            host.RunAndBlock();
+            //var host = new JobHost();
+            //// The following code ensures that the WebJob will be running continuously
+            //host.RunAndBlock();
+
+            IConverterJson converter = new MovieNowPlayingConverter();
+            Setting setting = new Setting();
+            IMovieService service = new MovieService(converter, setting.EndPoint, setting.ApiKey);
         }
     }
 }

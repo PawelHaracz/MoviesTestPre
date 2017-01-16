@@ -34,7 +34,7 @@ namespace MoviesTestPre
                     TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters
                     {         
                         ValidateIssuer = false,
-                        //RoleClaimType = "roles"
+                        RoleClaimType = "roles"
                     },
                     Notifications = new OpenIdConnectAuthenticationNotifications()
                     {
