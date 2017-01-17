@@ -1,7 +1,7 @@
 ﻿using Autofac;
-using MoviesTestPre.DAL;
-using MoviesTestPre.Repositories;
-using MoviesTestPre.Repositories.Interfaces;
+using MoviesTestPre.Repository.DAL;
+using MoviesTestPre.Repository.Repositories;
+using MoviesTestPre.Repository.Repositories.Interfaces;
 
 namespace MoviesTestPre.Infrastructures.Modules
 {

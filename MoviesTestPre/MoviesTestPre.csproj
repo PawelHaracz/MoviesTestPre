@@ -205,7 +205,6 @@
     <Compile Include="Infrastructures\Modules\BllModule.cs" />
     <Compile Include="Infrastructures\Modules\DbModule.cs" />
     <Compile Include="Infrastructures\Modules\RepositoryModule.cs" />
-    <Compile Include="DAL\ApplicationDbConfiguration.cs" />
     <Compile Include="DTO\MarkDto.cs" />
     <Compile Include="BLL\MarkLogic.cs" />
     <Compile Include="Infrastructures\AppSettingKey.cs" />
@@ -214,22 +213,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
-    <Compile Include="DAL\Mark.cs" />
-    <Compile Include="DAL\Movie.cs" />
     <Compile Include="Infrastructures\Extensions\ClaimsPrincipalExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="DAL\AdalTokenCache.cs" />
-    <Compile Include="DAL\ApplicationDbContext.cs" />
-    <Compile Include="DAL\Roles.cs" />
-    <Compile Include="DAL\UserTokenCache.cs" />
     <Compile Include="Infrastructures\Mappers\MarkDalToMovieDtoProfile.cs" />
     <Compile Include="Infrastructures\Modules\MapperModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Interfaces\IRepository.cs" />
-    <Compile Include="Repositories\MarkRepository.cs" />
-    <Compile Include="Repositories\MovieRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +234,7 @@
     <Compile Include="App_Start\Startup.Mapper.cs" />
     <None Include="Properties\PublishProfiles\MoviesTestPre1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\MoviesTestPre1 - Web Deploy.pubxml" />
+    <Content Include="Properties\webjobs-list.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -284,7 +275,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DAL\" />
     <Folder Include="Models\" />
+    <Folder Include="Repositories\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -296,6 +289,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MoviesTestPre.Repository\MoviesTestPre.Repository.csproj">
+      <Project>{5182FC3F-21FA-4268-9441-9B39D9351CFD}</Project>
+      <Name>MoviesTestPre.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -332,6 +331,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

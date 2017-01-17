@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using MoviesTestPre.BLL.Interfaces;
-using MoviesTestPre.DAL;
 using MoviesTestPre.DTO;
 using MoviesTestPre.Infrastructures.Extensions;
+using MoviesTestPre.Repository.DAL;
 
 namespace MoviesTestPre.Controllers
 {

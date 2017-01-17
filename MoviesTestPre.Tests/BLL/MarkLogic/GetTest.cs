@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using MoviesTestPre.BLL.Interfaces;
-using MoviesTestPre.DAL;
 using MoviesTestPre.DTO;
 using Xunit;
 

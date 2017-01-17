@@ -8,7 +8,7 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using MoviesTestPre.DAL;
+using MoviesTestPre.Repository.DAL;
 
 namespace MoviesTestPre
 {

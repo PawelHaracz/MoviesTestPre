@@ -1,11 +1,11 @@
-﻿    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Flurl.Http.Testing;
-    using Flurl.Util;
-    using MoviesTestPre.Tests.ExampleData;
-using MoviesTestPre.WebJob.Interfaces;
+using Flurl.Util;
+using MoviesTestPre.SetMovies.Interfaces;
+using MoviesTestPre.Tests.ExampleData;
 using Xunit;
 
 namespace MoviesTestPre.Tests.WebJob.MovieService
@@ -26,7 +26,7 @@ namespace MoviesTestPre.Tests.WebJob.MovieService
             {
                 var fake = new FakeJsonMovie();
                 var expectation = fake.ConvertedJson();
-                httpTest.RespondWithJson(fake.JsonResponse()); 
+                httpTest.RespondWithJson(fake.JsonResponse());
 
                 var movies = await _sercvice.DownloadNowPlayingMovies();
 
@@ -40,6 +40,6 @@ namespace MoviesTestPre.Tests.WebJob.MovieService
             IEnumerable<string> movies = await _sercvice.DownloadNowPlayingMovies();
             movies.Should().NotBeNullOrEmpty();
         }
-     
+
     }
 }

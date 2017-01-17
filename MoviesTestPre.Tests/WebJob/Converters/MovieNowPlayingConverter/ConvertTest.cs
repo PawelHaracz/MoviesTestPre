@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using FluentAssertions;
 using Microsoft.CSharp.RuntimeBinder;
+using MoviesTestPre.SetMovies.Interfaces;
 using MoviesTestPre.Tests.ExampleData;
-using MoviesTestPre.WebJob.Interfaces;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
@@ -61,6 +61,6 @@ namespace MoviesTestPre.Tests.WebJob.Converters.MovieNowPlayingConverter
             act.ShouldAllBeEquivalentTo(expectation);
         }
 
-     
+
     }
 }

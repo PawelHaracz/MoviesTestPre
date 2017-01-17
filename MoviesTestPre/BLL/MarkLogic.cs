@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using MoviesTestPre.BLL.Interfaces;
-using MoviesTestPre.DAL;
 using MoviesTestPre.DTO;
-using MoviesTestPre.Repositories.Interfaces;
 using System.Linq.Expressions;
+using MoviesTestPre.Repository.DAL;
+using MoviesTestPre.Repository.Repositories.Interfaces;
 
 namespace MoviesTestPre.BLL
 {

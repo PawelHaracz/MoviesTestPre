@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MoviesTestPre.DAL
+namespace MoviesTestPre.Repository.DAL
 {
     public class UserTokenCache
     {

@@ -5,7 +5,8 @@ using FakeItEasy;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using MoviesTestPre.Repository;
-using MoviesTestPre.Repository.Model;
+using MoviesTestPre.Repository.FuterDAL;
+using MoviesTestPre.Repository.FuterDAL.Model;
 
 namespace MoviesTestPre.Tests.Repository.DocumentDbRepository
 {

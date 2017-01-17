@@ -15,6 +15,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -119,19 +120,20 @@
     <Compile Include="WebJob\Converters\MovieNowPlayingConverter\MovieNowPlayingConverterFixure.cs" />
     <Compile Include="WebJob\MovieService\DownloadNowPlayingMoviesTest.cs" />
     <Compile Include="WebJob\MovieService\MovieServiceFixure.cs" />
+    <Compile Include="WebJob\MovieService\SaveMoviesWhichNotExist.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoviesTestPre.Repository\MoviesTestPre.Repository.csproj">
       <Project>{5182FC3F-21FA-4268-9441-9B39D9351CFD}</Project>
       <Name>MoviesTestPre.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MoviesTestPre.WebJob\MoviesTestPre.WebJob.csproj">
-      <Project>{8249EE30-1700-4BD9-BCBB-C8CB10ABC17B}</Project>
-      <Name>MoviesTestPre.WebJob</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MoviesTestPre\MoviesTestPre.csproj">
       <Project>{B5FEEF57-15A4-45B3-8F94-4E2F90CD6070}</Project>
       <Name>MoviesTestPre</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\setMovies\MoviesTestPre.SetMovies.csproj">
+      <Project>{120ADF27-2799-4CE7-AB0C-544DF90307F9}</Project>
+      <Name>MoviesTestPre.SetMovies</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

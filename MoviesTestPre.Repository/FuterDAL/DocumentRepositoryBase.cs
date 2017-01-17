@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
-using MoviesTestPre.Repository.Model;
+using MoviesTestPre.Repository.FuterDAL.Model;
 
-namespace MoviesTestPre.Repository
+namespace MoviesTestPre.Repository.FuterDAL
 {
     public abstract class DocumentRepositoryBase
     {

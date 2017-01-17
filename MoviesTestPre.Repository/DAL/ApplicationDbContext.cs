@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
 
-
-namespace MoviesTestPre.DAL
+namespace MoviesTestPre.Repository.DAL
 {
     public class ApplicationDbContext : DbContext
     {

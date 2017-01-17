@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MoviesTestPre.Repository;
 using Xunit;
 using FluentAssertions;
+using MoviesTestPre.Repository.FuterDAL;
 
 namespace MoviesTestPre.Tests.Repository.DocumentDbRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace MoviesTestPre.DAL
+﻿namespace MoviesTestPre.Repository.DAL
 {
     public class Roles
     {

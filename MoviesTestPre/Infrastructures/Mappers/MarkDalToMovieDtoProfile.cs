@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using MoviesTestPre.DAL;
 using MoviesTestPre.DTO;
+using MoviesTestPre.Repository.DAL;
 
 namespace MoviesTestPre.Infrastructures.Mappers
 {

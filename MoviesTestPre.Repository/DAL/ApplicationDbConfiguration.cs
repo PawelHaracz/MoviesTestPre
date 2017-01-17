@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity.Migrations;
 
-namespace MoviesTestPre.DAL
+namespace MoviesTestPre.Repository.DAL
 {
     public class ApplicationDbConfiguration : DbMigrationsConfiguration<ApplicationDbContext>
     {

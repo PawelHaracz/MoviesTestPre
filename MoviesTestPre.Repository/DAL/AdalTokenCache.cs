@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Security;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace MoviesTestPre.DAL
+namespace MoviesTestPre.Repository.DAL
 {
     public class AdalTokenCache : TokenCache
     {
@@ -22,7 +22,7 @@ namespace MoviesTestPre.DAL
             BeforeAccess = BeforeAccessNotification;
             BeforeWrite = BeforeWriteNotification;
             // look up the entry in the database
-            _cache = _db.UserTokenCaches.FirstOrDefault(c => c.webUserUniqueId == _userId);
+            _cache = Queryable.FirstOrDefault<UserTokenCache>(_db.UserTokenCaches, c => c.webUserUniqueId == _userId);
             // place the entry in memory
             Deserialize((_cache == null) ? null : MachineKey.Unprotect(_cache.cacheBits, AdalCache));
         }
@@ -31,7 +31,7 @@ namespace MoviesTestPre.DAL
         public override void Clear()
         {
             base.Clear();
-            var cacheEntry = _db.UserTokenCaches.FirstOrDefault(c => c.webUserUniqueId == _userId);
+            var cacheEntry = Queryable.FirstOrDefault<UserTokenCache>(_db.UserTokenCaches, c => c.webUserUniqueId == _userId);
             _db.UserTokenCaches.Remove(cacheEntry);
             _db.SaveChanges();
         }
@@ -43,7 +43,7 @@ namespace MoviesTestPre.DAL
             if (_cache == null)
             {
                 // first time access
-                _cache = _db.UserTokenCaches.FirstOrDefault(c => c.webUserUniqueId == _userId);
+                _cache = Queryable.FirstOrDefault<UserTokenCache>(_db.UserTokenCaches, c => c.webUserUniqueId == _userId);
             }
             else
             { 
@@ -56,10 +56,10 @@ namespace MoviesTestPre.DAL
                 };
 
                 // if the in-memory copy is older than the persistent copy
-                if (status.First().LastWrite > _cache.LastWrite)
+                if (Queryable.First(status).LastWrite > _cache.LastWrite)
                 {
                     // read from from storage, update in-memory copy
-                    _cache = _db.UserTokenCaches.FirstOrDefault(c => c.webUserUniqueId == _userId);
+                    _cache = Queryable.FirstOrDefault<UserTokenCache>(_db.UserTokenCaches, c => c.webUserUniqueId == _userId);
                 }
             }
             Deserialize((_cache == null) ? null : MachineKey.Unprotect(_cache.cacheBits, AdalCache));

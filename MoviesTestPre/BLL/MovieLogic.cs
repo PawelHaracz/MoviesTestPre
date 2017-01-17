@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using MoviesTestPre.BLL.Interfaces;
-using MoviesTestPre.DAL;
-using MoviesTestPre.Repositories.Interfaces;
+using MoviesTestPre.Repository.DAL;
+using MoviesTestPre.Repository.Repositories.Interfaces;
 
 namespace MoviesTestPre.BLL
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MoviesTestPre.WebJob.Interfaces;
+using MoviesTestPre.SetMovies.Interfaces;
 
 namespace MoviesTestPre.Tests.WebJob.Converters.MovieNowPlayingConverter
 {
@@ -13,7 +13,7 @@ namespace MoviesTestPre.Tests.WebJob.Converters.MovieNowPlayingConverter
 
         public MovieNowPlayingConverterFixure()
         {
-            Converter = new MoviesTestPre.WebJob.Converters.MovieNowPlayingConverter();
+            Converter = new SetMovies.Converters.MovieNowPlayingConverter();
         }
     }
 }

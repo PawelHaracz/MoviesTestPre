@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OpenIdConnect;
 using MoviesTestPre.Infrastructures;
-using MoviesTestPre.DAL;
+using MoviesTestPre.Repository.DAL;
 
 namespace MoviesTestPre.Controllers
 {

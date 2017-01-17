@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using MoviesTestPre.DAL;
+using MoviesTestPre.Repository.DAL;
 
 namespace MoviesTestPre.Infrastructures.Modules
 {

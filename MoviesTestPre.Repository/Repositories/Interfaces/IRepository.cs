@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using MoviesTestPre.DAL;
 
-namespace MoviesTestPre.Repositories.Interfaces
+namespace MoviesTestPre.Repository.Repositories.Interfaces
 {
     public interface IRepository<T> where T : class
     {

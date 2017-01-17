@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 using AutoMapper;
 using FakeItEasy;
 using MoviesTestPre.BLL.Interfaces;
-using MoviesTestPre.DAL;
 using MoviesTestPre.Infrastructures.Mappers;
-using MoviesTestPre.Repositories.Interfaces;
+using MoviesTestPre.Repository.DAL;
+using MoviesTestPre.Repository.Repositories.Interfaces;
 
 namespace MoviesTestPre.Tests.BLL.MovieLogic
 {

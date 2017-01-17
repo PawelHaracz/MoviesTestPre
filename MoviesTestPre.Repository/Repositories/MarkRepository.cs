@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using MoviesTestPre.DAL;
-using MoviesTestPre.Repositories.Interfaces;
+using MoviesTestPre.Repository.DAL;
+using MoviesTestPre.Repository.Repositories.Interfaces;
 
-namespace MoviesTestPre.Repositories
+namespace MoviesTestPre.Repository.Repositories
 {
     public class MarkRepository : IRepository<Mark>
     {

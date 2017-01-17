@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Microsoft.Azure.Documents;
 
-namespace MoviesTestPre.Repository
+namespace MoviesTestPre.Repository.FuterDAL
 {
     public interface IDocumentDbRepository<T>
     {

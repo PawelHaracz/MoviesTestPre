@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using FluentAssertions;
-using MoviesTestPre.DAL;
 using MoviesTestPre.DTO;
+using MoviesTestPre.Repository.DAL;
 using Xunit;
 
 namespace MoviesTestPre.Tests.Mapper.MarkDalToMovieDtoProfile

@@ -7,7 +7,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
 using MoviesTestPre.Infrastructures;
-using MoviesTestPre.DAL;
+using MoviesTestPre.Repository.DAL;
 using Owin;
 
 namespace MoviesTestPre
