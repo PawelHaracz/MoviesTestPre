@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
@@ -16,17 +17,17 @@ namespace MoviesTestPre.SetMovies
         private readonly IConverterJson _converter;
         private readonly IRepository<Movie> _movieRepository;
 
-        public MovieService(IConverterJson converter, IRepository<Movie> movieRepository, string endPoint, string apiKey)
+        public MovieService(IConverterJson converter, IRepository<Movie> movieRepository, MovieWebSetting setting)
         {
             _converter = converter;
             _movieRepository = movieRepository;
-            _apiKey = apiKey;
-            _endPoint = endPoint;
+            _apiKey = setting.ApiKey;
+            _endPoint = setting.EndPoint;
         }
 
         public async Task<IEnumerable<string>> DownloadNowPlayingMovies()
         {
-            string methodName = "now_playing";
+            string methodName = "movie/now_playing";
 
             var json = await $"{_endPoint}{methodName}"
                 .SetQueryParams(
@@ -40,14 +41,18 @@ namespace MoviesTestPre.SetMovies
             return _converter.Convert(json);
         }
 
-        public async Task SaveMoviesWhichNotExist(IEnumerable<string> movies)
+        public async Task<int> SaveMoviesWhichNotExist(IEnumerable<string> movies)
         {
+            var  i = 0;
             foreach (var movie in movies)
             {
-                var movieObj = await _movieRepository.Get(m => string.Equals(m.Name, movie, StringComparison.CurrentCultureIgnoreCase));
-                if (movieObj == null)
-                    await _movieRepository.Add(new Movie() { Name = movie });
+                var movieObj = await _movieRepository.Get(m => m.Name.ToLower() == movie.ToLower());
+                if (movieObj.Any()) continue;
+
+                await _movieRepository.Add(new Movie { Name = movie });
+                i++;
             }
+            return i;
         }
     }
 }

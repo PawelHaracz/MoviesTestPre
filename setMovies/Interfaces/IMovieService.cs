@@ -6,6 +6,6 @@ namespace MoviesTestPre.SetMovies.Interfaces
     public interface IMovieService
     {
         Task<IEnumerable<string>> DownloadNowPlayingMovies();
-        Task SaveMoviesWhichNotExist(IEnumerable<string> movies);
+        Task<int> SaveMoviesWhichNotExist(IEnumerable<string> movies);
     }
 }
